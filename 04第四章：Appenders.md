@@ -249,7 +249,7 @@ java chapters.appenders.ConfigurationTester logback-timestamp.xml
 | triggeringPolicy |                       TriggeringPolicy                       | 告诉 `RollingFileAppender` 什么时候发生轮转行为。下面将会详细说明 |
 |     prudent      |                           boolean                            | [`FixedWindowRollingPolicy`](#FixedWindowRollingPolicy) 不支持该属性。<br />`RollingFileAppender` 在使用严格模式时要与  [`TimeBasedRollingPolicy](#TimeBasedRollingPolicy) 结合使用，但是有两个限制：<br />1. 在严格模式下，也不支持也不允许文件压缩（我们不能让一个 JVM 在写入文件时，另一个 JVM 在压缩该文件）<br />2. 不能对 `FileAppender` 的 `file` 属性进行设置。实际上，大多数的操作系统不允许在有进程操作文件的情况下对文件改名。<br />其它的参考 `FileAppender` |
 
-### Rolling policy 简介
+### Rolling policy(滚动策略简介)
 
 [`RollingPolicy`](https://logback.qos.ch/xref/ch/qos/logback/core/rolling/RollingPolicy.html) 负责轮转的方式为：移动文件以及对文件改名。
 
@@ -366,7 +366,7 @@ public interface RollingPolicy extends LifeCycle {
 </configuration>
 ```
 
-### 基于大小以及时间的轮转策略
+#### SizeAndTimeBasedRollingPolicy(基于大小以及时间的轮转策略)
 
 有时你希望按时轮转，但同时又想限制每个日志文件的大小。特别是如果后期处理工具需要对日志进行大小限制。为了满足这个需求，logback 配备了 `SizeAndTimeBasedRollingPolicy`。
 
@@ -462,7 +462,7 @@ public interface RollingPolicy extends LifeCycle {
 </configuration>
 ```
 
-## 触发策略简介
+### TriggeringPolicy(触发策略简介)
 
 [`TriggeringPolicy`](https://logback.qos.ch/xref/ch/qos/logback/core/rolling/TriggeringPolicy.html) 的实现用于通知 `RollingFileAppender` 何时轮转。
 
